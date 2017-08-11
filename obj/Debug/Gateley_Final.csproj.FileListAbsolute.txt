@@ -10,3 +10,4 @@ C:\Users\Kurt\Dropbox\Semester 4\C# ADO\Gateley_Final\Gateley_Final\obj\Debug\Ga
 C:\Users\Kurt\Dropbox\Semester 4\C# ADO\Gateley_Final\Gateley_Final\obj\Debug\Gateley_Final.pdb
 C:\Users\dlgateley\Desktop\Gateley_Final\Gateley_Final\obj\Debug\Gateley_Final.exe
 C:\Users\dlgateley\Desktop\Gateley_Final\Gateley_Final\obj\Debug\Gateley_Final.pdb
+C:\Users\dlgateley\Desktop\Gateley_Final\Gateley_Final\bin\Debug\FinalCrypt.exe.config

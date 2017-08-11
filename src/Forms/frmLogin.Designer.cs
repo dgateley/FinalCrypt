@@ -28,9 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // frmLogin
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "frmLogin";
+            this.ClientSize = new System.Drawing.Size(502, 198);
+            this.Name = "frmLogin";
+            this.Text = "Login";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmLogin_Paint);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseDown);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -5,15 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using FinalCrypt.Theme;
 
 namespace FinalCrypt.Controls
 {
     class FinalCryptWindowMinimizeButton : Button
     {
+        public bool Clickable { get; set; } = true;
+
         private SolidBrush brush = new SolidBrush(Color.FromArgb(255, 20, 20, 20));
         private SolidBrush hoveredBrush = new SolidBrush(Color.FromArgb(255, 50, 50, 50));
-
-        public bool clickable = true;
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -37,7 +38,7 @@ namespace FinalCrypt.Controls
 
         protected override void OnClick(EventArgs e)
         {
-            if (clickable)
+            if (Clickable)
                 FindForm().WindowState = FormWindowState.Minimized;
         }
     }

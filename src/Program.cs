@@ -14,7 +14,7 @@ namespace FinalCrypt
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.frmLogin());
+            Application.Run(new frmLogin());
         }
     }
 }

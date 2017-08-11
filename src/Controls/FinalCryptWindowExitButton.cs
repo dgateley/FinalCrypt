@@ -11,16 +11,16 @@ namespace FinalCrypt.Controls
 {
     class FinalCryptWindowExitButton : Button
     {
+        public bool Clickable { get; set; } = true;
+
+        public ThemeWindowCommands.CloseTypes Type { get; set; } = ThemeWindowCommands.CloseTypes.Exit;
+
+
         private SolidBrush brush = new SolidBrush(Color.FromArgb(255, 20, 20, 20));
         private SolidBrush hoveredBrush = new SolidBrush(Color.FromArgb(255, 180, 0, 50));
 
-        public bool clickable = true;
-        public WindowCommands.CloseTypes type = WindowCommands.CloseTypes.Close;
-
         protected override void OnPaint(PaintEventArgs e)
         {
-            //base.OnPaint(e);
-
             Point topLeft = new Point(6, 6);
             Point bottomRight = new Point(16, 16);
             Point topRight = new Point(16, 6);
@@ -28,7 +28,7 @@ namespace FinalCrypt.Controls
 
             Pen pen = new Pen(Color.White, 2);
 
-            if (clickable)
+            if (Clickable)
             {
                 if (ClientRectangle.Contains(PointToClient(Cursor.Position)))
                     e.Graphics.FillRectangle(hoveredBrush, e.ClipRectangle);
@@ -54,11 +54,11 @@ namespace FinalCrypt.Controls
 
         protected override void OnClick(EventArgs e)
         {
-            if (clickable)
+            if (Clickable)
             {
-                if (type == WindowCommands.CloseTypes.Close)
+                if (Type == ThemeWindowCommands.CloseTypes.Close)
                     FindForm().Close();
-                else if (type == WindowCommands.CloseTypes.Exit)
+                else if (Type == ThemeWindowCommands.CloseTypes.Exit)
                     Application.Exit();
             }
         }

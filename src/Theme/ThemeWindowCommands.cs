@@ -9,7 +9,7 @@ namespace FinalCrypt.Theme
     /// <summary>
     /// Used to edit the behavior of the Minimize/Maximize/Close buttons
     /// </summary>
-    class WindowCommands
+    class ThemeWindowCommands
     {
         /// <summary>
         /// Provides alternate behavior for the exit button
@@ -20,6 +20,15 @@ namespace FinalCrypt.Theme
             Close
         }
 
+        public class WindowSettings
+        {
+            public CloseTypes CloseType { get; set; } = CloseTypes.Exit;
 
+            public bool Closable { get; set; } = true;
+
+            public bool Minimizable { get; set; } = true;
+
+            public bool Maximizable { get; set; } = true;
+        }
     }
 }
