@@ -9,3 +9,6 @@ C:\Users\dlgateley\Desktop\Gateley_Final\Gateley_Final\obj\Debug\FinalCrypt.cspr
 C:\Users\dlgateley\Desktop\Gateley_Final\Gateley_Final\obj\Debug\FinalCrypt.exe
 C:\Users\dlgateley\Desktop\Gateley_Final\Gateley_Final\obj\Debug\FinalCrypt.pdb
 C:\Users\dlgateley\Desktop\Gateley_Final\Gateley_Final\obj\Debug\FinalCrypt.Forms.frmLogin.resources
+C:\Users\dlgateley\Desktop\Gateley_Final\FinalCrypt\bin\Debug\FinalCrypt.exe.config
+C:\Users\dlgateley\Desktop\Gateley_Final\FinalCrypt\obj\Debug\FinalCrypt.exe
+C:\Users\dlgateley\Desktop\Gateley_Final\FinalCrypt\obj\Debug\FinalCrypt.pdb
