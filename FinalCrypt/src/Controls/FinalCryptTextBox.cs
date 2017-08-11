@@ -12,7 +12,21 @@ namespace FinalCrypt.Controls
 { 
     class FinalCryptTextBox : Panel
     {
-        TextBox textBox;
+        public TextBox textBox;
+        public Button button;
+
+        private bool passwordHidden;
+
+        public bool PasswordHidden
+        {
+            get { return passwordHidden; }
+            set
+            {
+                passwordHidden = value;
+                textBox.UseSystemPasswordChar = value;
+            }
+        }
+
 
         public FinalCryptTextBox()
         {
@@ -23,11 +37,11 @@ namespace FinalCrypt.Controls
             {
                 AutoSize = false,
                 BorderStyle = BorderStyle.None,
-                TextAlign = HorizontalAlignment.Center,
                 Dock = DockStyle.Fill,
+                TextAlign = HorizontalAlignment.Center,
                 Font = ThemeSettings.TextFontSmall,
                 BackColor = ThemeSettings.TextBoxBackgroundColor,
-                ForeColor = ThemeSettings.TextBoxForegroundColor,
+                ForeColor = ThemeSettings.TextBoxForegroundColor
             };
 
             textBox.Enter += Refresh;
@@ -60,6 +74,39 @@ namespace FinalCrypt.Controls
             borderPen.Dispose();
 
             base.OnPaint(e);
+        }
+
+        public void AddButton()
+        {
+            button = new Button();
+            button.Height = Height;
+            button.Width = 35;
+            button.FlatStyle = FlatStyle.Flat;
+            button.Image = Image.FromFile("..\\..\\resources\\IconEyeOpen.png");
+            PasswordHidden = true;
+            button.FlatAppearance.BorderSize = 0;
+            button.BackColor = ThemeSettings.ButtonBackgroundDarkColor;
+            button.Click += (s, e) => { ToggleVisibility(); }; 
+            Controls.Add(button);
+            Width += button.Width;
+            textBox.Dock = DockStyle.Left;
+            button.Dock = DockStyle.Right;
+            textBox.Location = new Point(0, 0);
+            textBox.Size = new Size(Width - button.Width, Height);
+        }
+
+        private void ToggleVisibility()
+        {
+            if (PasswordHidden)
+            {
+                button.Image = Image.FromFile("..\\..\\resources\\IconEyeClosed.png");
+                PasswordHidden = false;
+            }
+            else
+            {
+                button.Image = Image.FromFile("..\\..\\resources\\IconEyeOpen.png");
+                PasswordHidden = true;
+            }
         }
     }
 }

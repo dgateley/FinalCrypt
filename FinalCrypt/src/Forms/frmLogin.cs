@@ -13,6 +13,20 @@ namespace FinalCrypt.Forms
 {
     public partial class frmLogin : Form
     {
+        private bool passwordVisible;
+
+        public bool PasswordVisible
+        {
+            get { return passwordVisible; }
+
+            set
+            {
+                passwordVisible = value;
+                txtPassword.textBox.UseSystemPasswordChar = value;
+            }
+        }
+
+
         public frmLogin()
         {
             InitializeComponent();
@@ -20,6 +34,12 @@ namespace FinalCrypt.Forms
             windowSettings.Maximizable = false;
 
             ThemeStyling.Style(this, windowSettings);
+
+            PasswordVisible = false;
+
+            txtPassword.AddButton();
+            btnRegister.BackColor = ThemeSettings.AlternateBackgroundColor;
+            btnRegister.ForeColor = ThemeSettings.PrimaryBackgroundColor;
         }
 
         // Handle theme drawing
