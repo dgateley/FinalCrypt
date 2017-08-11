@@ -19,25 +19,26 @@ namespace FinalCrypt.Theme
         public static void Style(Form form, ThemeWindowCommands.WindowSettings settings)
         {
             form.FormBorderStyle = FormBorderStyle.None;
+            form.BackColor = ThemeSettings.PrimaryBackgroundColor;
 
 
             // Add window handle controls
             FinalCryptWindowExitButton exitButton = new FinalCryptWindowExitButton();
             form.Controls.Add(exitButton);
-            exitButton.Size = new Size(22, 22);
+            exitButton.Size = new Size(28, 28);
             exitButton.Location = new Point(form.Width - exitButton.Width, 0);
             exitButton.Clickable = settings.Closable;
             exitButton.Type = settings.CloseType;
 
             FinalCryptWindowMaximizeButton maximizeButton = new FinalCryptWindowMaximizeButton();
             form.Controls.Add(maximizeButton);
-            maximizeButton.Size = new Size(22, 22);
+            maximizeButton.Size = new Size(28, 28);
             maximizeButton.Location = new Point(form.Width - exitButton.Width - maximizeButton.Width, 0);
-            //maximizeButton.Clickable = settings.Maximizable;
+            maximizeButton.Clickable = settings.Maximizable;
 
             FinalCryptWindowMinimizeButton minimizeButton = new FinalCryptWindowMinimizeButton();
             form.Controls.Add(minimizeButton);
-            minimizeButton.Size = new Size(22, 22);
+            minimizeButton.Size = new Size(28, 28);
             minimizeButton.Location = new Point(form.Width - exitButton.Width - maximizeButton.Width - minimizeButton.Width, 0);
             minimizeButton.Clickable = settings.Minimizable;
 

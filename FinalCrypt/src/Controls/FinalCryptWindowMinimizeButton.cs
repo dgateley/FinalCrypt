@@ -13,26 +13,25 @@ namespace FinalCrypt.Controls
     {
         public bool Clickable { get; set; } = true;
 
-        private SolidBrush brush = new SolidBrush(Color.FromArgb(255, 20, 20, 20));
-        private SolidBrush hoveredBrush = new SolidBrush(Color.FromArgb(255, 50, 50, 50));
+        private SolidBrush brush = new SolidBrush(ThemeSettings.WindowMinimizeButtonBackgroundColor);
+        private SolidBrush hoveredBrush = new SolidBrush(ThemeSettings.WindowMinimizeButtonBackgroundHoveredColor);
 
         protected override void OnPaint(PaintEventArgs e)
         {
+            Point bottomLeft = new Point(6, 20);
+            Point bottomRight = new Point(20, 20);
+            Pen pen = new Pen(ThemeSettings.WindowMinimizeButtonForegroundColor, 2);
 
-            Point bottomLeft = new Point(6, 16);
-            Point bottomRight = new Point(16, 16);
-
-
-            Pen pen = new Pen(Color.White, 2);
-
-
-            if (ClientRectangle.Contains(PointToClient(Cursor.Position)))
-                e.Graphics.FillRectangle(hoveredBrush, e.ClipRectangle);
-            else
-                e.Graphics.FillRectangle(brush, e.ClipRectangle);
+            if (Clickable)
+            {
+                if (ClientRectangle.Contains(PointToClient(Cursor.Position)))
+                    e.Graphics.FillRectangle(hoveredBrush, e.ClipRectangle);
+                else
+                    e.Graphics.FillRectangle(brush, e.ClipRectangle);
+            }
 
             e.Graphics.DrawLine(pen, bottomLeft, bottomRight);
-
+  
             pen.Dispose();
         }
 

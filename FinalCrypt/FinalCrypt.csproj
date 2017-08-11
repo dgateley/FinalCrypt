@@ -50,6 +50,12 @@
     <Compile Include="src\Controls\FinalCryptButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\Controls\FinalCryptLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Controls\FinalCryptTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Controls\FinalCryptWindowExitButton.cs">
       <SubType>Component</SubType>
     </Compile>

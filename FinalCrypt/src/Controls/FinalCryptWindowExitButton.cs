@@ -16,17 +16,16 @@ namespace FinalCrypt.Controls
         public ThemeWindowCommands.CloseTypes Type { get; set; } = ThemeWindowCommands.CloseTypes.Exit;
 
 
-        private SolidBrush brush = new SolidBrush(Color.FromArgb(255, 20, 20, 20));
-        private SolidBrush hoveredBrush = new SolidBrush(Color.FromArgb(255, 180, 0, 50));
+        SolidBrush brush = new SolidBrush(ThemeSettings.WindowExitButtonBackgroundColor);
+        SolidBrush hoveredBrush = new SolidBrush(ThemeSettings.WindowExitButtonBackgroundHoveredColor);
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Point topLeft = new Point(6, 6);
-            Point bottomRight = new Point(16, 16);
-            Point topRight = new Point(16, 6);
-            Point bottomLeft = new Point(6, 16);
-
-            Pen pen = new Pen(Color.White, 2);
+            Point topLeft = new Point(7, 7);
+            Point bottomRight = new Point(20, 20);
+            Point topRight = new Point(20, 7);
+            Point bottomLeft = new Point(7, 20);
+            Pen pen = new Pen(ThemeSettings.WindowExitButtonForegroundColor, 2);
 
             if (Clickable)
             {
@@ -37,13 +36,8 @@ namespace FinalCrypt.Controls
             }
             else
             {
-                brush = new SolidBrush(Color.FromArgb(255, 10, 10, 10));
-                hoveredBrush = new SolidBrush(Color.FromArgb(255, 20, 20, 20));
-
-                if (ClientRectangle.Contains(PointToClient(Cursor.Position)))
-                    e.Graphics.FillRectangle(hoveredBrush, e.ClipRectangle);
-                else
-                    e.Graphics.FillRectangle(brush, e.ClipRectangle);
+                brush = new SolidBrush(ThemeSettings.WindowButtonDisabledColor);
+                e.Graphics.FillRectangle(brush, e.ClipRectangle);
             }
 
             e.Graphics.DrawLine(pen, topLeft, bottomRight);

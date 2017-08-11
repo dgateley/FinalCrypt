@@ -22,8 +22,8 @@ namespace FinalCrypt.Theme
             SolidBrush foregroundBrush = new SolidBrush(ThemeSettings.WindowHandleForegroundColor);
             Graphics graphics = form.CreateGraphics();
 
-            graphics.FillRectangle(backgroundBrush, new Rectangle(0, 0, form.Width, 22));
-            graphics.DrawString(form.Text, ThemeSettings.TextFontSmall, foregroundBrush, 2, 2);
+            graphics.FillRectangle(backgroundBrush, new Rectangle(0, 0, form.Width, 28));
+            graphics.DrawString(form.Text, ThemeSettings.TextFontSmall, foregroundBrush, 4, 4);
 
             foregroundBrush.Dispose();
             backgroundBrush.Dispose();
