@@ -38,7 +38,6 @@ namespace FinalCrypt.Controls
                 AutoSize = false,
                 BorderStyle = BorderStyle.None,
                 Dock = DockStyle.Fill,
-                TextAlign = HorizontalAlignment.Center,
                 Font = ThemeSettings.TextFontSmall,
                 BackColor = ThemeSettings.TextBoxBackgroundColor,
                 ForeColor = ThemeSettings.TextBoxForegroundColor
