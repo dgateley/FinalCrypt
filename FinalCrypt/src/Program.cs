@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using FinalCrypt.Forms;
+using FinalCrypt.DB;
 
 namespace FinalCrypt
 {

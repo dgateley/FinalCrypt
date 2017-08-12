@@ -30,13 +30,13 @@
         {
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.pnlLogin = new System.Windows.Forms.Panel();
-            this.lblLogin = new FinalCrypt.Controls.FinalCryptLabel();
             this.btnRegister = new FinalCrypt.Controls.FinalCryptButton();
             this.btnLogin = new FinalCrypt.Controls.FinalCryptButton();
             this.lblUsername = new FinalCrypt.Controls.FinalCryptLabel();
             this.lblPassword = new FinalCrypt.Controls.FinalCryptLabel();
             this.txtPassword = new FinalCrypt.Controls.FinalCryptTextBox();
             this.txtUsername = new FinalCrypt.Controls.FinalCryptTextBox();
+            this.lblLogin = new FinalCrypt.Controls.FinalCryptLabel();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.pnlLogin.SuspendLayout();
             this.SuspendLayout();
@@ -64,18 +64,6 @@
             this.pnlLogin.Size = new System.Drawing.Size(469, 169);
             this.pnlLogin.TabIndex = 5;
             // 
-            // lblLogin
-            // 
-            this.lblLogin.AutoSize = true;
-            this.lblLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.lblLogin.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.lblLogin.Location = new System.Drawing.Point(21, 152);
-            this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(83, 20);
-            this.lblLogin.TabIndex = 6;
-            this.lblLogin.Text = "Credentials";
-            // 
             // btnRegister
             // 
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
@@ -88,6 +76,7 @@
             this.btnRegister.TabIndex = 5;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnLogin
             // 
@@ -101,6 +90,7 @@
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblUsername
             // 
@@ -146,6 +136,18 @@
             this.txtUsername.Size = new System.Drawing.Size(296, 28);
             this.txtUsername.TabIndex = 2;
             // 
+            // lblLogin
+            // 
+            this.lblLogin.AutoSize = true;
+            this.lblLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.lblLogin.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.lblLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
+            this.lblLogin.Location = new System.Drawing.Point(21, 152);
+            this.lblLogin.Name = "lblLogin";
+            this.lblLogin.Size = new System.Drawing.Size(83, 20);
+            this.lblLogin.TabIndex = 6;
+            this.lblLogin.Text = "Credentials";
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +157,7 @@
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.imgLogo);
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FinalCrypt - Login";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.frmLogin_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmLogin_MouseDown);

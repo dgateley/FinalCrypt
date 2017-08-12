@@ -27,6 +27,7 @@ namespace FinalCrypt.Controls
             RectangleF Rect = new RectangleF(0, 0, Width, Height);
             GraphicsPath GraphPath = new GraphicsPath();
             Pen pen = new Pen(ThemeSettings.ButtonBackgroundColor);
+            SolidBrush brush = new SolidBrush(BackColor);
             int radius = 10;
             float r2 = radius / 2f;
 
@@ -44,6 +45,11 @@ namespace FinalCrypt.Controls
             pen.Alignment = PenAlignment.Inset;
 
             e.Graphics.DrawPath(pen, GraphPath);
+            e.Graphics.FillPath(brush, GraphPath);
+
+            pen.Dispose();
+            brush.Dispose();
+            GraphPath.Dispose();
 
             base.OnPaint(e);
         }
