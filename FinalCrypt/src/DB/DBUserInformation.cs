@@ -9,6 +9,7 @@ namespace FinalCrypt.DB
     class DBUserInformation
     {
         public static string Username { get; set; }
-        
+        public static int UserID { get; set; }
+
     }
 }
