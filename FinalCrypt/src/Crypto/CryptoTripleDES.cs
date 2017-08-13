@@ -21,8 +21,8 @@ namespace FinalCrypt.Crypto
             TripleDES alg = TripleDES.Create();
             Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(settings.Password, salt);
 
-            alg.Key = pdb.GetBytes(32);
-            alg.IV = pdb.GetBytes(16);
+            alg.Key = pdb.GetBytes(24);
+            alg.IV = pdb.GetBytes(8);
 
             CryptoStream cs = new CryptoStream(ms, alg.CreateEncryptor(), CryptoStreamMode.Write);
 
