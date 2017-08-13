@@ -70,7 +70,7 @@ namespace FinalCrypt.Forms
 
             if (success)
             {
-                MessageBox.Show("User account has been registered. You may now login.");
+                MessageBox.Show("User account has been registered. You may now login.", "Success");
                 Close();
             }
         }

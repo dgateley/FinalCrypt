@@ -94,7 +94,7 @@ namespace FinalCrypt.DB
         /// <returns></returns>
         public static bool AttemptRegister(string username, string password)
         {
-            bool exists = AttemptLogin(username, password);
+            bool exists = UserExists(username);
             string query = "INSERT INTO Users VALUES (@password, @username);";
             bool ret = false;
 
@@ -128,6 +128,45 @@ namespace FinalCrypt.DB
 
             return ret;
         }
+
+        /// <summary>
+        /// Checks if the user exists in the database
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
+        public static bool UserExists(string username)
+        {
+            bool ret = false;
+            SqlDataReader dataReader;
+            string query = "SELECT * FROM Users WHERE Username = @username;";
+
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@username", username);
+
+                connection.Open();
+                dataReader = sqlCommand.ExecuteReader();
+
+                if (dataReader.Read())
+                    ret = true;
+                else
+                    ret = false;
+
+                dataReader.Close();
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ret;
+        }
+
 
         /// <summary>
         /// Populates user information

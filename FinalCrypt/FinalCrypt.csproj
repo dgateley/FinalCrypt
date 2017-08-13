@@ -93,6 +93,12 @@
     <Compile Include="src\Crypto\FileInformation.cs" />
     <Compile Include="src\DB\DBOperations.cs" />
     <Compile Include="src\DB\DBUserInformation.cs" />
+    <Compile Include="src\Forms\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Forms\frmCrypto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Controls\FinalCryptStatisticsPanel.resx">
       <DependentUpon>FinalCryptStatisticsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Forms\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Forms\frmCrypto.resx">
       <DependentUpon>frmCrypto.cs</DependentUpon>
