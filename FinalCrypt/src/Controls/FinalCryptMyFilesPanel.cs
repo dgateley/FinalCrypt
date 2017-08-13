@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using FinalCrypt.Crypto;
 using FinalCrypt.Theme;
 using FinalCrypt.DB;
+using FinalCrypt.Forms;
 
 namespace FinalCrypt.Controls
 {
@@ -124,7 +125,24 @@ namespace FinalCrypt.Controls
         // Open the encrypt/decrypt form
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
+            if (lsbFiles.SelectedIndex == -1)
+                return;
 
+            frmCrypto form = new frmCrypto();
+            form.FileToEncrypt = FileInformation.myFiles[lsbFiles.SelectedIndex];
+            FindForm().Hide();
+            form.ShowDialog();
+            FindForm().Show();
+
+            lsbFiles.Items.Clear();
+
+            foreach (FileInformation f in FileInformation.myFiles)
+            {
+                lsbFiles.Items.Add(f.Name);
+            }
+
+            pnlFileSettings.Visible = false;
+            lblFileSettings.Visible = false;
         }
 
         // Delete the file from the list and database

@@ -9,7 +9,6 @@ namespace FinalCrypt.Crypto
     class EncryptionSettings
     {
         public string Type { get; set; }
-        public string Key { get; set; }
-        public string IV { get; set; }
+        public string Password { get; set; }
     }
 }

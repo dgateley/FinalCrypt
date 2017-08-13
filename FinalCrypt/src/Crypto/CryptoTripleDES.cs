@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Security.Cryptography;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace FinalCrypt.Crypto
 {
-    class CryptoRijndael
+    class CryptoTripleDES
     {
         private static readonly byte[] salt = new byte[] { 0x4d, 0x52, 0x20, 0x42, 0x4f, 0x4e, 0x45, 0x53, 0x20, 0x49, 0x20, 0x57, 0x41, 0x4e, 0x54, 0x20, 0x54, 0x4f, 0x20, 0x47, 0x45, 0x54, 0x20, 0x4f, 0x46, 0x46, 0x20, 0x59, 0x4f, 0x55, 0x52, 0x20, 0x57, 0x49, 0x4c, 0x44, 0x20, 0x52, 0x49, 0x44, 0x45, };
 
@@ -18,7 +18,7 @@ namespace FinalCrypt.Crypto
             byte[] fileData = File.ReadAllBytes(file.Path);
 
             MemoryStream ms = new MemoryStream();
-            Rijndael alg = Rijndael.Create();
+            TripleDES alg = TripleDES.Create();
             Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(settings.Password, salt);
 
             alg.Key = pdb.GetBytes(32);
@@ -33,9 +33,8 @@ namespace FinalCrypt.Crypto
 
             File.WriteAllBytes(file.Path, encryptedData);
 
-
             file.IsEncrypted = true;
-            file.Encyrption = "Rijndael";
+            file.Encyrption = "TripleDES";
         }
 
         public static void Decrypt(FileInformation file, EncryptionSettings settings)
@@ -43,11 +42,11 @@ namespace FinalCrypt.Crypto
             byte[] fileData = File.ReadAllBytes(file.Path);
 
             MemoryStream ms = new MemoryStream();
-            Rijndael alg = Rijndael.Create();
+            TripleDES alg = TripleDES.Create();
             Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(settings.Password, salt);
 
-            alg.Key = pdb.GetBytes(32);
-            alg.IV = pdb.GetBytes(16);
+            alg.Key = pdb.GetBytes(24);
+            alg.IV = pdb.GetBytes(8);
 
             CryptoStream cs = new CryptoStream(ms, alg.CreateDecryptor(), CryptoStreamMode.Write);
 

@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="src\Crypto\CryptoEncryption.cs" />
     <Compile Include="src\Crypto\CryptoRijndael.cs" />
+    <Compile Include="src\Crypto\CryptoTripleDES.cs" />
     <Compile Include="src\Crypto\EncryptionSettings.cs" />
     <Compile Include="src\Crypto\FileInformation.cs" />
     <Compile Include="src\DB\DBOperations.cs" />
