@@ -14,7 +14,7 @@ namespace FinalCrypt.Crypto
             {
 
             }
-            else if (encryptionSettings.Type == "")
+         //   else if (encryptionSettings.Type == "")
         }
     }
 }

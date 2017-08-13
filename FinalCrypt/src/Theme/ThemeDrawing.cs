@@ -29,5 +29,36 @@ namespace FinalCrypt.Theme
             backgroundBrush.Dispose();
             graphics.Dispose();
         }
+
+
+        /// <summary>
+        /// Draws the header on the main form
+        /// </summary>
+        /// <param name="form"></param>
+        public static void DrawMainHeader(Form form)
+        {
+            SolidBrush brush = new SolidBrush(ThemeSettings.AlternateBackgroundColor);
+            Graphics graphics = form.CreateGraphics();
+
+            graphics.FillRectangle(brush, new Rectangle(0, 28, form.Width, 42));
+
+            graphics.Dispose();
+            brush.Dispose();
+        }
+
+        /// <summary>
+        /// Draws the surroundings of the panel view
+        /// </summary>
+        /// <param name="form"></param>
+        public static void DrawMainTreeBorder(Form form)
+        {
+            SolidBrush brush = new SolidBrush(ThemeSettings.MenuViewBackgroundColor);
+            Graphics graphics = form.CreateGraphics();
+
+            graphics.FillRectangle(brush, new Rectangle(0, 28 + 42, 172, 500));
+
+            graphics.Dispose();
+            brush.Dispose();
+        }
     }
 }

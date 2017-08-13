@@ -58,11 +58,12 @@ namespace FinalCrypt.Theme
 
         // Menu View
         public static Color MenuViewForegroundCoor { get; set; } = TextColor;
-        public static Color MenuViewBackgroundcolor { get; set; } = Color.FromArgb(255, 240, 240, 240);
-
-        
+        public static Color MenuViewBackgroundColor { get; set; } = Color.FromArgb(255, 140, 140, 140);
 
 
+        // Labels
+        public static Color LabelTrueColor { get; set; } = Color.FromArgb(255, 0, 190, 0);
+        public static Color LabelFalseColor { get; set; } = Color.FromArgb(255, 255, 0, 0);
 
 
 

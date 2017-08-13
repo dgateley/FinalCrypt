@@ -34,11 +34,14 @@ namespace FinalCrypt.Forms
             ThemeWindowCommands.WindowSettings windowSettings = new ThemeWindowCommands.WindowSettings();
             windowSettings.Maximizable = false;
             windowSettings.CloseType = ThemeWindowCommands.CloseTypes.Close;
+
             ThemeStyling.Style(this, windowSettings);
 
             PasswordVisible = false;
 
             txtPassword.AddButton();
+
+            btnRegister.BackColor = ThemeSettings.ButtonBackgroundColor;
         }
 
         // Handle drawing

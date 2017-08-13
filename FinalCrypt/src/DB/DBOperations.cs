@@ -65,10 +65,8 @@ namespace FinalCrypt.DB
                 if (dataReader.Read())
                 {
                     ret = true;
-                    DBUserInformation.Username = username;
 
-                    // Get userID
-
+                    GetUserInformation(username);
                 }
                 else
                 {
@@ -141,6 +139,7 @@ namespace FinalCrypt.DB
 
             try
             {
+                connection.Close();
                 SqlCommand sqlCommand = new SqlCommand(query, connection);
                 sqlCommand.Parameters.AddWithValue("@username", username);
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
@@ -158,6 +157,66 @@ namespace FinalCrypt.DB
             catch (Exception e)
             {
                 System.Windows.Forms.MessageBox.Show("Problem retrieving info for user: " + DBUserInformation.Username);
+                System.Windows.Forms.MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+
+        /// <summary>
+        /// Changes the current user's username
+        /// </summary>
+        /// <param name="username">The new username</param>
+        public static void ChangeUsername(string username)
+        {
+            string query = "UPDATE Users SET Username = @username WHERE ID = @userID;";
+
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@username", username);
+                sqlCommand.Parameters.AddWithValue("@userID", DBUserInformation.UserID);
+
+                connection.Open();
+
+                sqlCommand.ExecuteNonQuery();
+
+                DBUserInformation.Username = username;
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        /// <summary>
+        /// Changes the current user's password
+        /// </summary>
+        /// <param name="username">The new username</param>
+        public static void ChangePassword(string password)
+        {
+            string query = "UPDATE Users SET Pass = @password WHERE ID = @userID;";
+
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+                sqlCommand.Parameters.AddWithValue("@password", password);
+                sqlCommand.Parameters.AddWithValue("@userID", DBUserInformation.UserID);
+
+                connection.Open();
+
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.ToString());
             }
             finally
             {
@@ -184,6 +243,9 @@ namespace FinalCrypt.DB
 
                 sqlDataAdapter.Fill(dt);
 
+                // Purge old files in list and reload new ones
+                FileInformation.myFiles.Clear();
+
                 foreach (DataRow item in dt.Rows)
                 {
                     FileInformation file = new FileInformation();
@@ -193,6 +255,7 @@ namespace FinalCrypt.DB
                     file.IsEncrypted = Convert.ToBoolean(item.Field<int>("IsEncrypted"));
                     file.OnThisMachine = System.IO.File.Exists(file.Path);
                     file.DBID = item.Field<int>("ID");
+
 
                     FileInformation.myFiles.Add(file);
                 }
@@ -206,6 +269,49 @@ namespace FinalCrypt.DB
                 connection.Close();
             }
         }
+
+        /// <summary>
+        /// Returns a list of all files in the database for statistic purposes
+        /// </summary>
+        /// <returns></returns>
+        public static List<FileInformation> GetAllFiles()
+        {
+            string query = "SELECT * FROM Files;";
+            DataTable dt = new DataTable();
+
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(sqlCommand);
+
+                connection.Open();
+
+                sqlDataAdapter.Fill(dt);
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.ToString());
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            List<FileInformation> ret = new List<FileInformation>();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                FileInformation file = new FileInformation();
+                file.Path = item.Field<string>("FilePath");
+                file.Encyrption = item.Field<string>("EncryptionType");
+                file.IsEncrypted = Convert.ToBoolean(item.Field<int>("IsEncrypted"));
+
+                ret.Add(file);
+            }
+
+            return ret;
+        }
+
 
         /// <summary>
         /// Check if a file exists in the database for the current user
@@ -258,7 +364,7 @@ namespace FinalCrypt.DB
             if (exists)
             {
                 // Update the file
-                string query = "UPDATE Files SET FIlePath = @filePath, IsEncrypted = @isEncrypted, EncryptionType = @type WHERE UserID = (SELECT ID FROM Users WHERE Username = @username);";
+                string query = "UPDATE Files SET FilePath = @filePath, IsEncrypted = @isEncrypted, EncryptionType = @type WHERE UserID = (SELECT ID FROM Users WHERE Username = @username);";
 
                 try
                 {
@@ -283,7 +389,7 @@ namespace FinalCrypt.DB
             }
             else
             {
-                string query = "INSERT INTO Files VALUES (@filePath, @isEncrypted, @encryptionType, @userID);";
+                string query = "INSERT INTO Files VALUES (@filePath, @isEncrypted, @type, @userID);";
 
                 try
                 {
@@ -297,6 +403,37 @@ namespace FinalCrypt.DB
 
                     sqlCommand.ExecuteNonQuery();
 
+                }
+                catch (Exception e)
+                {
+                    System.Windows.Forms.MessageBox.Show(e.ToString());
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Delete a file from the database
+        /// </summary>
+        /// <param name="fileInformation"></param>
+        public static void DeleteFile(FileInformation fileInformation)
+        {
+            if (FileExists(fileInformation))
+            {
+                string query = "DELETE FROM Files WHERE ID = @fileID";
+
+                try
+                {
+                    SqlCommand sqlCommand = new SqlCommand(query, connection);
+                    sqlCommand.Parameters.AddWithValue("@fileID", fileInformation.DBID);
+
+                    connection.Open();
+
+                    sqlCommand.ExecuteNonQuery();
                 }
                 catch (Exception e)
                 {

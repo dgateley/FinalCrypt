@@ -53,6 +53,27 @@
     <Compile Include="src\Controls\FinalCryptLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\Controls\FinalCryptMyFilesPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Controls\FinalCryptMyFilesPanel.Designer.cs">
+      <DependentUpon>FinalCryptMyFilesPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Controls\FInalCryptPanelButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Controls\FinalCryptSettingsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Controls\FinalCryptSettingsPanel.Designer.cs">
+      <DependentUpon>FinalCryptSettingsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Controls\FinalCryptStatisticsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Controls\FinalCryptStatisticsPanel.Designer.cs">
+      <DependentUpon>FinalCryptStatisticsPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Controls\FinalCryptTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -65,14 +86,29 @@
     <Compile Include="src\Controls\FinalCryptWindowMinimizeButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\Crypto\CryptoEncryption.cs" />
+    <Compile Include="src\Crypto\CryptoRijndael.cs" />
+    <Compile Include="src\Crypto\EncryptionSettings.cs" />
     <Compile Include="src\Crypto\FileInformation.cs" />
     <Compile Include="src\DB\DBOperations.cs" />
     <Compile Include="src\DB\DBUserInformation.cs" />
+    <Compile Include="src\Forms\frmCrypto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\frmCrypto.Designer.cs">
+      <DependentUpon>frmCrypto.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Forms\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Forms\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Forms\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Forms\frmRegister.cs">
       <SubType>Form</SubType>
@@ -97,8 +133,23 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="src\Controls\FinalCryptMyFilesPanel.resx">
+      <DependentUpon>FinalCryptMyFilesPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Controls\FinalCryptSettingsPanel.resx">
+      <DependentUpon>FinalCryptSettingsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Controls\FinalCryptStatisticsPanel.resx">
+      <DependentUpon>FinalCryptStatisticsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Forms\frmCrypto.resx">
+      <DependentUpon>frmCrypto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Forms\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Forms\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>

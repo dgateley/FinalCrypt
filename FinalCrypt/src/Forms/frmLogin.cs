@@ -31,6 +31,7 @@ namespace FinalCrypt.Forms
         public frmLogin()
         {
             InitializeComponent();
+
             ThemeWindowCommands.WindowSettings windowSettings = new ThemeWindowCommands.WindowSettings();
             windowSettings.Maximizable = false;
 
@@ -41,6 +42,7 @@ namespace FinalCrypt.Forms
             txtPassword.AddButton();
             btnRegister.BackColor = ThemeSettings.AlternateBackgroundColor;
             btnRegister.ForeColor = ThemeSettings.PrimaryBackgroundColor;
+            btnLogin.BackColor = ThemeSettings.ButtonBackgroundColor;
 
             DBOperations.CreateConnection();
         }
@@ -80,7 +82,13 @@ namespace FinalCrypt.Forms
 
             if (success)
             {
+                // Load files
+                DBOperations.GetMyFiles();
+
                 // Open main form
+                frmMain form = new frmMain();
+                form.Show();
+                Hide();
             }
             else
             {
