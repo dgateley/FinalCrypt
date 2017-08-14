@@ -24,5 +24,16 @@ namespace FinalCrypt.Forms
             ThemeStyling.Style(this, windowSettings);
         }
 
+        // Drawing
+        private void frmAbout_Paint(object sender, PaintEventArgs e)
+        {
+            ThemeDrawing.DrawWindowHandle(this);
+        }
+
+        // Dragging
+        private void frmAbout_MouseDown(object sender, MouseEventArgs e)
+        {
+            ThemeInteraction.Drag(this, e);
+        }
     }
 }

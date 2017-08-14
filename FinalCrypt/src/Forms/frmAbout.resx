@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblInfo.Text" xml:space="preserve">
+    <value>FinalCrypt is a program you can use to keep track of and secure your files.
+
+My Files - You can manage your files here. "Add" will add a new file
+to the tracker. Once you have a file selected, you may delete it from 
+the database or encrypt/decrypt it.
+
+Statistics - This page shows some statistics about your files and 
+all files being kept track of by other users.
+
+Settings - On this page, you can change your username and password.</value>
+  </data>
 </root>

@@ -15,51 +15,65 @@ namespace FinalCrypt.Crypto
         // Encrypt a byte array into a byte array using a key and an IV 
         public static void Encrypt(FileInformation file, EncryptionSettings settings)
         {
-            byte[] fileData = File.ReadAllBytes(file.Path);
+            try
+            {
+                byte[] fileData = File.ReadAllBytes(file.Path);
 
-            MemoryStream ms = new MemoryStream();
-            Rijndael alg = Rijndael.Create();
-            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(settings.Password, salt);
+                MemoryStream ms = new MemoryStream();
+                Rijndael alg = Rijndael.Create();
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(settings.Password, salt);
 
-            alg.Key = pdb.GetBytes(32);
-            alg.IV = pdb.GetBytes(16);
+                alg.Key = pdb.GetBytes(32);
+                alg.IV = pdb.GetBytes(16);
 
-            CryptoStream cs = new CryptoStream(ms, alg.CreateEncryptor(), CryptoStreamMode.Write);
+                CryptoStream cs = new CryptoStream(ms, alg.CreateEncryptor(), CryptoStreamMode.Write);
 
-            cs.Write(fileData, 0, fileData.Length);
-            cs.Close();
+                cs.Write(fileData, 0, fileData.Length);
+                cs.Close();
 
-            byte[] encryptedData = ms.ToArray();
+                byte[] encryptedData = ms.ToArray();
 
-            File.WriteAllBytes(file.Path, encryptedData);
+                File.WriteAllBytes(file.Path, encryptedData);
 
 
-            file.IsEncrypted = true;
-            file.Encyrption = "Rijndael";
+                file.IsEncrypted = true;
+                file.Encyrption = "Rijndael";
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show("Invalid Password", "Error");
+            }
         }
 
         public static void Decrypt(FileInformation file, EncryptionSettings settings)
         {
-            byte[] fileData = File.ReadAllBytes(file.Path);
+            try
+            { 
+                byte[] fileData = File.ReadAllBytes(file.Path);
 
-            MemoryStream ms = new MemoryStream();
-            Rijndael alg = Rijndael.Create();
-            Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(settings.Password, salt);
+                MemoryStream ms = new MemoryStream();
+                Rijndael alg = Rijndael.Create();
+                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(settings.Password, salt);
 
-            alg.Key = pdb.GetBytes(32);
-            alg.IV = pdb.GetBytes(16);
+                alg.Key = pdb.GetBytes(32);
+                alg.IV = pdb.GetBytes(16);
 
-            CryptoStream cs = new CryptoStream(ms, alg.CreateDecryptor(), CryptoStreamMode.Write);
+                CryptoStream cs = new CryptoStream(ms, alg.CreateDecryptor(), CryptoStreamMode.Write);
 
-            cs.Write(fileData, 0, fileData.Length);
-            cs.Close();
+                cs.Write(fileData, 0, fileData.Length);
+                cs.Close();
 
-            byte[] decryptedData = ms.ToArray();
+                byte[] decryptedData = ms.ToArray();
 
-            File.WriteAllBytes(file.Path, decryptedData);
+                File.WriteAllBytes(file.Path, decryptedData);
 
-            file.IsEncrypted = false;
-            file.Encyrption = "None";
+                file.IsEncrypted = false;
+                file.Encyrption = "None";
+            }
+            catch (Exception e)
+            {
+                System.Windows.Forms.MessageBox.Show("Invalid Password", "Error");
+            }
         }
     }
 }

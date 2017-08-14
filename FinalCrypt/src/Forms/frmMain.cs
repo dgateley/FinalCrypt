@@ -83,7 +83,10 @@ namespace FinalCrypt.Forms
         // Load about form
         private void btnAbout_Click(object sender, EventArgs e)
         {
-
+            frmAbout form = new frmAbout();
+            Hide();
+            form.ShowDialog();
+            Show();
         }
     }
 }
