@@ -11,11 +11,11 @@ namespace FinalCrypt.DB
 {
     class DBOperations
     {
-        public static string Domain = "gaming.tstc.edu";
-        public static string DBName = "dgateleyCSFInal";
-        public static string Username = "dgateley";
-        public static string Password = "1616190";
-        public static string ConnectionString = "server=gaming.tstc.edu;database=" + DBName + ";user id = " + Username + "; password=" + Password + ";";
+        public static string Domain = "";
+        public static string DBName = "";
+        public static string Username = "";
+        public static string Password = "";
+        public static string ConnectionString = "server=;database=" + DBName + ";user id = " + Username + "; password=" + Password + ";";
 
         static SqlConnection connection;
 
